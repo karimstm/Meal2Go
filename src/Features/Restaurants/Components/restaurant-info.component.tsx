@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { Text, Image } from "react-native";
 import {
   Title,
   Card,
@@ -9,12 +8,13 @@ import {
   Rating,
   RadingContainer,
   Open,
+  Icon,
 } from "./style";
 import { SvgXml } from "react-native-svg";
 
 import open from "../../../../assets/open";
 import star from "../../../../assets/start";
-import { Spacer } from "../../../components";
+import { Spacer, Text } from "../../../components";
 
 type Props = {
   restaurant?: {
@@ -54,13 +54,13 @@ export const RestaurantInfo: FC<Props> = ({ restaurant = {} }) => {
           </Rating>
           <Open>
             {isClosedTemporarily && (
-              <Text style={{ color: "red" }}>CLOSED TEMPORARILY</Text>
+              <Text variant="error">CLOSED TEMPORARILY</Text>
             )}
             <Spacer position="left" size="large">
               {isOpenNow && <SvgXml xml={open} width="20" height="20" />}
             </Spacer>
             <Spacer position="left" size="large">
-              <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+              <Icon source={{ uri: icon }} />
             </Spacer>
           </Open>
         </RadingContainer>

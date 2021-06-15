@@ -38,10 +38,16 @@ export const Open = styled.View`
   padding-top: ${({ theme }) => theme.space[2]};
   padding-bottom: ${({ theme }) => theme.space[2]};
   flex-direction: row;
+  align-items: center;
 `;
 
 export const RadingContainer = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+`;
+
+export const Icon = styled.Image`
+  width: 15px;
+  height: 15px;
 `;

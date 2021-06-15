@@ -17,7 +17,6 @@ const positionVariant = {
 };
 
 const getVariant = (position: IPosition, size: ISize, space: string[]) => {
-  console.log(`${positionVariant[position]}: ${space[SizeVariant[size]]}`);
   return `${positionVariant[position]}: ${space[SizeVariant[size]]}`;
 };
 
