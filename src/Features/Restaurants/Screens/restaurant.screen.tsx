@@ -1,33 +1,46 @@
-import React from "react";
-import { Searchbar } from "react-native-paper";
+import React, { useContext } from "react";
+import { Pressable, TouchableOpacity } from "react-native";
+import { Colors } from "react-native-paper";
 import { RestaurantInfo } from "../Components/restaurant-info.component";
-import { SearchContainer, RestaurantList } from "./style";
+import { Search } from "../Components/search.component";
+import { RestaurantList, LoadingView, Spinner } from "./style";
 import { Spacer, SafeArea } from "../../../components";
+import { RestaurantsContext } from "../../../services/restaurants/restaurant.context";
 
-export const RestaurantsScreen = () => (
-  <SafeArea>
-    <SearchContainer>
-      <Searchbar placeholder="search" value="" />
-    </SearchContainer>
-    <RestaurantList
-      data={[
-        { name: 1 },
-        { name: 2 },
-        { name: 3 },
-        { name: 4 },
-        { name: 5 },
-        { name: 6 },
-        { name: 7 },
-        { name: 8 },
-      ]}
-      renderItem={() => (
-        <Spacer position="bottom" size="large">
-          <RestaurantInfo />
-        </Spacer>
+interface IRestaurantsScreen {
+  navigation: any;
+}
+
+export const RestaurantsScreen: React.FC<IRestaurantsScreen> = ({
+  navigation,
+}) => {
+  const { isLoading, restaurants } = useContext(RestaurantsContext);
+
+  return (
+    <SafeArea>
+      {isLoading && (
+        <LoadingView>
+          <Spinner animating={true} size={50} color={Colors.blue300} />
+        </LoadingView>
       )}
-      keyExtractor={(item: any) => item?.name}
-      // eslint-disable-next-line react-native/no-inline-styles
-      contentContainerStyle={{ padding: 16 }}
-    />
-  </SafeArea>
-);
+      <Search />
+      <RestaurantList
+        data={restaurants}
+        renderItem={(item: any) => {
+          return (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("RestaurantDetails")}
+            >
+              <Spacer position="bottom" size="large">
+                <RestaurantInfo restaurant={item.item} />
+              </Spacer>
+            </TouchableOpacity>
+          );
+        }}
+        keyExtractor={(item: any) => item?.name}
+        // eslint-disable-next-line react-native/no-inline-styles
+        contentContainerStyle={{ padding: 16 }}
+      />
+    </SafeArea>
+  );
+};

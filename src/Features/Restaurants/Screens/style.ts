@@ -1,9 +1,6 @@
 import styled from "styled-components/native";
 import { FlatList } from "react-native";
-
-export const SearchContainer = styled.View`
-  padding: ${(props) => props.theme.space[3]};
-`;
+import { ActivityIndicator } from "react-native-paper";
 
 export const ListContainer = styled.View`
   flex: 1;
@@ -13,3 +10,13 @@ export const ListContainer = styled.View`
 export const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: { padding: 16 },
 })``;
+
+export const LoadingView = styled.View`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+`;
+
+export const Spinner = styled(ActivityIndicator)`
+  margin-left: -25px;
+`;

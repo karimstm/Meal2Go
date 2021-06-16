@@ -9,7 +9,7 @@ import {
   RadingContainer,
   Open,
   Icon,
-} from "./style";
+} from "./restaurant-info.style";
 import { SvgXml } from "react-native-svg";
 
 import open from "../../../../assets/open";
@@ -25,6 +25,7 @@ type Props = {
     isOpenNow: boolean;
     rating: number;
     isClosedTemporarily?: boolean;
+    place_id?: string;
   };
 };
 
@@ -37,6 +38,7 @@ export const RestaurantInfo: FC<Props> = ({ restaurant = {} }) => {
     isOpenNow = true,
     rating = 4,
     isClosedTemporarily = true,
+    place_id = "",
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -49,7 +51,12 @@ export const RestaurantInfo: FC<Props> = ({ restaurant = {} }) => {
         <RadingContainer>
           <Rating>
             {ratingArray.map((_, i) => (
-              <SvgXml key={i} xml={star} width="20" height="20" />
+              <SvgXml
+                key={`start-${place_id}-${i}`}
+                xml={star}
+                width="20"
+                height="20"
+              />
             ))}
           </Rating>
           <Open>
