@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { View } from "react-native";
 import {
   Title,
   Card,
@@ -14,7 +15,7 @@ import { SvgXml } from "react-native-svg";
 
 import open from "../../../../assets/open";
 import star from "../../../../assets/start";
-import { Spacer, Text } from "../../../components";
+import { Spacer, Text, Favourite } from "../../../components";
 
 type Props = {
   restaurant?: {
@@ -45,7 +46,10 @@ export const RestaurantInfo: FC<Props> = ({ restaurant = {} }) => {
 
   return (
     <Card elevation={5}>
-      <Cover key={name} source={{ uri: photos[0] }} />
+      <View>
+        <Favourite restaurant={restaurant} />
+        <Cover key={name} source={{ uri: photos[0] }} />
+      </View>
       <Info>
         <Title>{name}</Title>
         <RadingContainer>

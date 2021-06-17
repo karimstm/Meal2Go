@@ -1,15 +1,12 @@
 import React from "react";
 
-import {
-  NavigationContainer,
-  RouteProp,
-  DefaultTheme,
-} from "@react-navigation/native";
+import { NavigationContainer, RouteProp } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text } from "react-native";
 import { SafeArea } from "../../components";
 import { RestaurantsNavigator } from "./restaurant.navigator";
 import { Ionicons } from "@expo/vector-icons";
+import { MapScreen } from "../../Features/Map/screens/map.screen";
 
 const TAB_ICON: { [key: string]: string } = {
   Restaurant: "md-restaurant",
@@ -21,14 +18,6 @@ const SettingsScreen = () => {
   return (
     <SafeArea>
       <Text>Settings!</Text>
-    </SafeArea>
-  );
-};
-
-const MapScreen = () => {
-  return (
-    <SafeArea>
-      <Text>Map!</Text>
     </SafeArea>
   );
 };

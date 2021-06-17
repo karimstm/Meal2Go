@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infastructure/theme";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurant.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
+import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -28,12 +29,14 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <LocationContextProvider>
-          <RestaurantsContextProvider>
-            <Navigation />
-            <ExpoStatusBar style="auto" />
-          </RestaurantsContextProvider>
-        </LocationContextProvider>
+        <FavouritesContextProvider>
+          <LocationContextProvider>
+            <RestaurantsContextProvider>
+              <Navigation />
+              <ExpoStatusBar style="auto" />
+            </RestaurantsContextProvider>
+          </LocationContextProvider>
+        </FavouritesContextProvider>
       </ThemeProvider>
     </>
   );

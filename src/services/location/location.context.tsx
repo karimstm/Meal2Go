@@ -24,7 +24,6 @@ export const LocationContextProvider: React.FC<{ children: React.ReactNode }> =
       locationRequest(keyword.toLocaleLowerCase())
         .then(locationTransform)
         .then((res) => {
-          console.log(res);
           setLocation(res);
           setIsLoading(false);
         })

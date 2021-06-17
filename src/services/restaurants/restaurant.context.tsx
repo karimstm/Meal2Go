@@ -31,7 +31,6 @@ export const RestaurantsContextProvider: React.FC<ContextProps> = ({
           setRestaurants(res);
         })
         .catch((err) => {
-          console.log(err);
           setIsLoading(false);
           setError(err);
         });
