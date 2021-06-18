@@ -7,6 +7,7 @@ import { SafeArea } from "../../components";
 import { RestaurantsNavigator } from "./restaurant.navigator";
 import { Ionicons } from "@expo/vector-icons";
 import { MapScreen } from "../../Features/Map/screens/map.screen";
+import { AccountNavigator } from "./account.navigator";
 
 const TAB_ICON: { [key: string]: string } = {
   Restaurant: "md-restaurant",
@@ -57,7 +58,8 @@ const redTheme = {
 export const AppNavigator = () => {
   return (
     <NavigationContainer theme={redTheme}>
-      <Tab.Navigator
+      <AccountNavigator />
+      {/* <Tab.Navigator
         screenOptions={screenOptions}
         tabBarOptions={{
           activeTintColor: "tomato",
@@ -67,7 +69,7 @@ export const AppNavigator = () => {
         <Tab.Screen name="Restaurant" component={RestaurantsNavigator} />
         <Tab.Screen name="Map" component={MapScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
+      </Tab.Navigator> */}
     </NavigationContainer>
   );
 };
